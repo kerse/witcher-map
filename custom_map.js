@@ -49,7 +49,7 @@ ymaps.ready(function () {
         map = new ymaps.Map('map', {
             center: [54.51, 25.5],
             zoom: 6,
-            controls: ['zoomControl', 'rulerControl', 'typeSelector'],
+            controls: ['zoomControl', 'rulerControl'],
             type: MAP_TYPE_NAME
         }, {
            
