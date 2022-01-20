@@ -1,69 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru" style="padding:0;margin:0;height:100%;min-height:100%;width:100%;">
-<head style="padding:0;margin:0;height:100%;min-height:100%;width:100%;">
-    <title>Witcher Map</title>
-    <script src="https://api-maps.yandex.ru/2.1/?apikey=a3a41e57-b3c9-4c23-90d7-de3baa86ead2&lang=ru_RU" type="text/javascript"></script>
-    <script type="text/javascript">
-        window.onload = function () {
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Создание собственной карты</title>
+    <meta charset="utf-8">
 
-            var YMaps = window.ymaps;
-
-            var options = {
-                    tileUrlTemplate: "./%z/tile-%x-%y.png",
-                    controls: {
-                        typeControl: true,
-                        miniMap: true,
-                        toolBar: true,
-                        scaleLine: true
-                    },
-                    scrollZoomEnabled: true,
-                    mapCenter: new YMaps.GeoPoint(38.9126088335161, 58.3891560344454),
-                    backgroundMapType: YMaps.MapType.NONE,
-                    mapZoom: 6,
-                    isTransparent: true,
-                    smoothZooming: false,
-                    layerKey: "my#layer",
-                    mapType: {
-                        name: "Witcher",
-                        textColor: "#000000"
-                    },
-                    copyright: ""
-                },
-                map = new YMaps.Map(document.getElementById("YMapsID")),
-                myData = new YMaps.TileDataSource(options.tileUrlTemplate, options.isTransparent, options.smoothZooming);
-
-            myData.getTileUrl = function (tile, zoom) {
-                return this.getTileUrlTemplate().replace(/%x/i, tile.x).replace(/%y/i, tile.y).replace(/%z/i, zoom);
-            }
-
-            var MyLayer = function () {
-                return new YMaps.Layer(myData);
-            }
-            YMaps.Layers.add(options.layerKey, MyLayer);
-
-            var mapLayers = options.backgroundMapType ? options.backgroundMapType.getLayers() : [],
-                myMapType = new YMaps.MapType(YMaps.jQuery.merge(mapLayers, [ options.layerKey ]), options.mapType.name, { textColor: options.mapType.textColor });
-
-            map.setCenter(options.mapCenter, options.mapZoom, myMapType);
-            if (options.copyright) {
-                map.addCopyright(options.copyright);
-            }
-
-         
-            if (options.controls.toolBar) {
-                map.addControl(new YMaps.ToolBar());
-            }
-            if (options.controls.scaleLine) {
-                map.addControl(new YMaps.ScaleLine());
-            }
-            if (options.scrollZoomEnabled) {
-                map.enableScrollZoom();
-            }
-            map.addControl(new YMaps.Zoom());
+    <style>
+        html, body, .map {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
         }
-    </script>
+    </style>
+    <!--
+        Укажите свой API-ключ. Тестовый ключ НЕ БУДЕТ работать на других сайтах.
+        Получить ключ можно в Кабинете разработчика: https://developer.tech.yandex.ru/keys/
+    -->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=<ваш API-ключ>"></script>
+    <script src="custom_map.js"></script>
 </head>
-<body style="padding:0;margin:0;height:100%;min-height:100%;width:100%;">
-    <div id="YMapsID" style="width:100%;height:100%"></div>
+<body>
+    <div id="map" class="map"></div>
 </body>
 </html>
