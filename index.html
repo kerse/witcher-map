@@ -5,6 +5,9 @@
     <script src="https://api-maps.yandex.ru/2.1/?apikey=a3a41e57-b3c9-4c23-90d7-de3baa86ead2&lang=ru_RU" type="text/javascript"></script>
     <script type="text/javascript">
         window.onload = function () {
+
+            YMaps = window.ymaps;
+
             var options = {
                     tileUrlTemplate: "./%z/tile-%x-%y.png",
                     controls: {
