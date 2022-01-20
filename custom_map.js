@@ -14,14 +14,14 @@ ymaps.ready(function () {
      */
 
     var Layer = function () {
-        var layer = new ymaps.Layer('./%z/tile-%x-%y.png', {
+        var layer = new ymaps.Layer('./new/%z/tile-%x-%y.png', {
             // Если есть необходимость показать собственное изображение в местах неподгрузившихся тайлов,
             // раскомментируйте эту строчку и укажите ссылку на изображение.
             //notFoundTile: './background.jpg'
         });
         // Указываем доступный диапазон масштабов для данного слоя.
         layer.getZoomRange = function () {
-            return ymaps.vow.resolve([3, 7]);
+            return ymaps.vow.resolve([1, 7]);
         };
         // Добавляем свои копирайты.
         layer.getCopyrights = function () {
@@ -47,9 +47,9 @@ ymaps.ready(function () {
          * Создаем карту, указав свой новый тип карты.
          */
         map = new ymaps.Map('map', {
-            center: [58.51, 40.5],
+            center: [54.51, 25.5],
             zoom: 6,
-            controls: ['zoomControl', 'rulerControl'],
+            controls: ['zoomControl', 'rulerControl', 'typeSelector'],
             type: MAP_TYPE_NAME
         }, {
            
