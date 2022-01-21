@@ -14,7 +14,7 @@ ymaps.ready(function () {
      */
 
     var Layer = function () {
-        var layer = new ymaps.Layer('./new/%z/tile-%x-%y.png', {
+        var layer = new ymaps.Layer('./map/%z/tile-%x-%y.png', {
             // Если есть необходимость показать собственное изображение в местах неподгрузившихся тайлов,
             // раскомментируйте эту строчку и укажите ссылку на изображение.
             notFoundTile: './background.png'
