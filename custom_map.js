@@ -21,7 +21,7 @@ ymaps.ready(function () {
         });
         // Указываем доступный диапазон масштабов для данного слоя.
         layer.getZoomRange = function () {
-            return ymaps.vow.resolve([1, 7]);
+            return ymaps.vow.resolve([4, 7]);
         };
         // Добавляем свои копирайты.
         layer.getCopyrights = function () {
